@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEstadoLabel_id}"/>
+                    <h:outputText value="#{estadoController.selected.id}" title="#{bundle.ViewEstadoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEstadoLabel_nombre}"/>
+                    <h:outputText value="#{estadoController.selected.nombre}" title="#{bundle.ViewEstadoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEstadoLabel_FKIdPais}"/>
+                    <h:outputText value="#{estadoController.selected.FKIdPais}" title="#{bundle.ViewEstadoTitle_FKIdPais}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="5">
+                    <h:commandLink class="btn btn-danger" action="#{estadoController.destroyAndView}" value="#{bundle.ViewEstadoDestroyLink}"/>
+
+                    <h:link class="btn btn-warning" outcome="Edit" value="#{bundle.ViewEstadoEditLink}"/>
+
+                    <h:commandLink class="btn btn-success" action="#{estadoController.prepareCreate}" value="#{bundle.ViewEstadoCreateLink}" />
+
+                    <h:commandLink class="btn btn-info" action="#{estadoController.prepareList}" value="#{bundle.ViewEstadoShowAllLink}"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.ViewEstadoIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

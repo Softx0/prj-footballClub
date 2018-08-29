@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro</title>
+        <meta charset="UTF-8"></meta>
+        <link rel="stylesheet" href="css/style2.css"></link>
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"></link>
+    </h:head>
+    <h:body style="background-image: url('resources/images/cristiano.jpg'); background-repeat:no-repeat; background-size:cover;">
+        <div id="login-box">
+            <div class="left">
+                <h1>Registrate</h1>
+                Username <h:inputText id="text" value="#{registroManagedBean.username}"></h:inputText>
+                Contraseña<h:inputSecret id="pass" value="#{inicioSesionManagedBean.password}"></h:inputSecret>
+                Correo <h:inputText id="text" value="#{inicioSesionManagedBean.email}"></h:inputText>
+                Rol <h:inputText id="text" value="#{registroManagedBean.rol}" ></h:inputText>
+                <h:commandButton type="submit" class="registrate" action="#{inicioSesionManagedBean.inicioSesion()}" value="Registrate"></h:commandButton>
+            </div>
+
+            <div class="right" style="background-image: url('resources/images/fifa.png'); background-repeat:no-repeat; background-size:cover; height: 450px;" >
+                <span class="loginwith">Registrate con<br />Redes Sociales</span>
+
+                <button class="social-signin facebook">Accede con facebook</button>
+                <button class="social-signin twitter">Accede con Twitter</button>
+                <button class="social-signin google">Accede con Google</button>
+            </div>
+            <div class="or">&oacute;</div>
+        </div>
+
+    </h:body>
+</html>
+

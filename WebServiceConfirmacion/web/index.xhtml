@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Web service</title>
+        <link rel="stylesheet" href="css/estilos.css"/>
+    </h:head>
+    <h:body>
+        <header>
+            <hgroup class="contenedor">
+                <h1>Xmail</h1>
+                <nav>
+                    <a href="">Documentacion</a>
+                </nav>
+            </hgroup>
+        </header>
+        
+        <section class="contenedor">
+            <article>
+                <h1>Web service Xmail</h1>
+                <p>Xmail es un web service que te brinda la oportunidad de enviar correos electronicos, este tiene gran aplicacion, ya que te brinda un conjunto de metodos que te permiten desarrollar las actividades usuales que involucran un correo electronico</p>
+                
+            </article>
+             <article class="form">        
+                 <h:form class="contenedor">
+                     <fieldset>
+                         <hgroup>
+                            <label>Nombre empresa:</label>
+                            <h:inputText id="empresaName" value="#{enviarCorreoManagedBean.companyName}"  required="true" requiredMessage="Campo requerido"></h:inputText>
+                            <h:message for="empresaName" errorStyle="color: red" infoStyle="color: green"/>
+                          
+                            <label>Asunto:</label>
+                            <h:inputText id="asunto" value="#{enviarCorreoManagedBean.asunto}" required="true" requiredMessage="Campo requerido"></h:inputText>
+                            <h:message for="asunto" errorStyle="color: red" infoStyle="color: green"/>
+                            
+                            
+                            <label>Correo receptor:</label>
+                            <h:inputText id="correoReceptor" value="#{enviarCorreoManagedBean.userEmail}" required="true" requiredMessage="Campo requerido"></h:inputText>
+                            <h:message for="correoReceptor" errorStyle="color: red" infoStyle="color: green"/>
+                        
+                            <label>Cuerpo del mensaje:</label>
+                            <h:inputTextarea id="cuerpoMessage" value="#{enviarCorreoManagedBean.cuerpoMessage}" class="textArea" required="true" requiredMessage="Campo requerido"></h:inputTextarea>
+                            <h:message for="cuerpoMessage" errorStyle="color: red" infoStyle="color: green"/>
+  
+                        </hgroup>
+                        
+                       <h:commandButton id="textValidacion" class="submit" type="submit" action="#{enviarCorreoManagedBean.enviarCorreo()}" value="Enviar"></h:commandButton>
+                       <h:messages for="textValidacion" errorStyle="color: red" infoStyle="color: green"/>
+                     </fieldset>
+                 </h:form>
+            </article> 
+        </section> 
+    </h:body>
+</html>
+

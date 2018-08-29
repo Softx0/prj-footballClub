@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPartidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form style="width: 600px;" styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPartidoEmpty}" rendered="#{partidoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{partidoController.items.rowCount > 0}">
+                    <h:outputText value="#{partidoController.pagination.pageFirstItem + 1}..#{partidoController.pagination.pageLastItem + 1}/#{partidoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{partidoController.previous}" value="#{bundle.Previous} #{partidoController.pagination.pageSize}" rendered="#{partidoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{partidoController.next}" value="#{bundle.Next} #{partidoController.pagination.pageSize}" rendered="#{partidoController.pagination.hasNextPage}"/>&nbsp;
+
+                    <h:panelGrid columns="6">
+
+                        <p:inputText placeholder="Buscar" value="#{consultaFlexibleBean.textoBuscar}" />
+                        <p:commandButton class="btn btn-outline-success btn-sm" value="Filtrar por Nombre" action="#{consultaFlexibleBean.llenarTablaFiltradaPartido()}" update="TableData" />
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/pdf.png"></h:graphicImage>
+                            <p:dataExporter type="pdf" target="TableData" fileName="Partido" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/excel.png"></h:graphicImage>
+                            <p:dataExporter type="xls" target="TableData" fileName="Partido" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive" url="../resources/images/xml.svg"></h:graphicImage>
+                            <p:dataExporter type="xml" target="TableData" fileName="Partido" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/csv_1.png"></h:graphicImage>
+                            <p:dataExporter type="csv" target="TableData" fileName="Partido" ></p:dataExporter>
+                        </h:commandLink>
+
+                    </h:panelGrid>
+
+                    <br/>
+
+                    <p:dataTable id="TableData" style="width:240%" value="#{consultaFlexibleBean.listaPartido}" var="item" >
+
+                        <p:column class="col-sm" style="width:50px;" headerText="Id" >
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Fecha" >
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Pts Equipo1" >
+                            <h:outputText value="#{item.cantPuntosEquipo1}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Pts Equipo2" >
+                            <h:outputText value="#{item.cantPuntosEquipo2}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" style="width:120px;" headerText="Descalificado" >
+                            <h:outputText value="#{item.descalificado}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Equipo1" >
+                            <h:outputText value="#{item.FKEquipo1}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Equipo2" >
+                            <h:outputText value="#{item.FKEquipo2}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Arbitro" >
+                            <h:outputText value="#{item.FKArbitro}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Copa" >
+                            <h:outputText value="#{item.FKCopa}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Estado" >
+                            <h:outputText value="#{item.FKEstado}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Etapa">
+                            <h:outputText value="#{item.FKEtapa}"/>
+                        </p:column>
+
+                        <p:column  class="col-sm" exportable="false" style="width:70px; text-align: center;" headerText="Ver">
+                            <h:commandLink class="btn btn-primary" action="#{partidoController.prepareView}" value="#{bundle.ListPartidoViewLink}"/>
+                        </p:column>
+
+                        <p:column  class="col-sm" exportable="false" style="width:90px; text-align: center;" headerText="Editar" >
+                            <h:commandLink class="btn btn-warning" action="#{partidoController.prepareEdit}" value="#{bundle.ListPartidoEditLink}"/>
+                        </p:column>
+
+                        <p:column  class="col-sm" exportable="false" style="width:120px; text-align: center;" headerText="Eliminar" >
+                            <h:commandLink class="btn btn-danger" action="#{partidoController.destroy}" value="#{bundle.ListPartidoDestroyLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:105px; text-align: center;" headerText="Copiar" >
+                            <h:commandLink class="btn btn-info" style="text-align: left;" value="Copiar"></h:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:panelGroup>
+                <br />
+                <h:panelGrid columns="2">
+                    <h:commandLink class="btn btn-success" action="#{partidoController.prepareCreate}" value="#{bundle.ListPartidoCreateLink}"/>
+
+                    <h:link class="btn btn-info" outcome="/index" value="#{bundle.ListPartidoIndexLink}"/>
+
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

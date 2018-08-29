@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>Registro</title>
+        <meta charset="UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/style2.css"></link>
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></link>
+    </head>
+    <body style="background-image: url('resources/images/Soccer-4k-ultra-hd-wallpapers-Football-HD-football-wallpapers-4K.jpg'); background-repeat:no-repeat; background-size:cover;">
+        <h:form>
+            <div id="login-box">
+                <div class="left">
+                    <div style="width: 145px; background-position: center center; margin: 0 auto; border: 0;" >
+                    <img src="resources/images/logo10.png" style="width: 145px; background-position: center center; margin: 0 auto; border: 0;" ></img>
+                    </div><br/>
+                    <h:panelGrid columns="1">
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_username}" for="username" />
+                        <h:inputText class="text" id="username" value="#{usuarioController.selected.username}" title="#{bundle.CreateUsuarioTitle_username}" />
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_password}" for="password" />
+                        <h:inputSecret class="pass" id="password" value="#{usuarioController.selected.password}" title="#{bundle.CreateUsuarioTitle_password}"  />
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_email}" for="email" />
+                        <h:inputText class="text" id="email" value="#{usuarioController.selected.email}" title="#{bundle.CreateUsuarioTitle_email}" />
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_rol}" for="rol" />
+                        <h:inputText class="text" id="rol" value="#{usuarioController.selected.rol}" title="#{bundle.CreateUsuarioTitle_rol}" />
+                        <h:commandLink class="btn btn-success" action="#{usuarioController.create}" value="Aceptar" /> 
+                    </h:panelGrid>             
+                </div>
+              <!--  <div class="right" style="background-image: url('resources/images/thumb2-football-field-adidas-telstar-18-2018-fifa-world-cup-official-ball-world-championship-2018.jpg'); background-repeat:no-repeat; background-size:cover; height: 550px;" >
+                    <span class="loginwith">Registrate con las Redes Sociales</span>
+                    <button class="social-signin facebook">Accede con facebook</button>
+                    <button class="social-signin twitter">Accede con Twitter</button>
+                    <button class="social-signin google">Accede con Google</button>
+                </div>
+                <div class="or">&oacute;</div>-->
+            </div>
+        </h:form>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </body>
+</html>
