@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipoLabel_id}"/>
+                    <h:outputText value="#{equipoController.selected.id}" title="#{bundle.ViewEquipoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_escudo}"/>
+                    <h:outputText value="#{equipoController.selected.escudo}" title="#{bundle.ViewEquipoTitle_escudo}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_nombre}"/>
+                    <h:outputText value="#{equipoController.selected.nombre}" title="#{bundle.ViewEquipoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_cantJugadores}"/>
+                    <h:outputText value="#{equipoController.selected.cantJugadores}" title="#{bundle.ViewEquipoTitle_cantJugadores}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_fechaCreacion}"/>
+                    <h:outputText value="#{equipoController.selected.fechaCreacion}" title="#{bundle.ViewEquipoTitle_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_dueno}"/>
+                    <h:outputText value="#{equipoController.selected.dueno}" title="#{bundle.ViewEquipoTitle_dueno}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_copasGanadas}"/>
+                    <h:outputText value="#{equipoController.selected.copasGanadas}" title="#{bundle.ViewEquipoTitle_copasGanadas}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_estado}"/>
+                    <h:outputText value="#{equipoController.selected.estado}" title="#{bundle.ViewEquipoTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewEquipoLabel_FKIdCoach}"/>
+                    <h:outputText value="#{equipoController.selected.FKIdCoach}" title="#{bundle.ViewEquipoTitle_FKIdCoach}"/>
+                </h:panelGrid>
+                <br />
+
+                <h:panelGrid columns="5">
+                    <h:commandLink class="btn btn-danger" action="#{equipoController.destroyAndView}" value="#{bundle.ViewEquipoDestroyLink}"/>
+
+                    <h:link class="btn btn-warning" outcome="Edit" value="#{bundle.ViewEquipoEditLink}"/>
+
+                    <h:commandLink class="btn btn-success" action="#{equipoController.prepareCreate}" value="#{bundle.ViewEquipoCreateLink}" />
+
+                    <h:commandLink class="btn btn-info" action="#{equipoController.prepareList}" value="#{bundle.ViewEquipoShowAllLink}"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.ViewEquipoIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

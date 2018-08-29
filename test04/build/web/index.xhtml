@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>FootGames</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></link>
+        <link rel="icon" href="resources/images/if_02_Soccer_300768.ico"/>
+        <link rel="shortcut icon" href="resources/images/if_02_Soccer_300768.ico"/>
+
+        <!-- Load font awesome icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     
+    </h:head>
+
+    <h:body style="background-color: #000000; color: #ffffff;">
+        <header id="logo"><img id="logoo" src="resources/images/logo3.png"></img></header>
+        <section>
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 5</div>
+                    <img src="resources/images/Campo-de-futbol.jpg" style="width:100%"></img>
+                    <div class="text">Copa mundial</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 5</div>
+                    <img src="resources/images/rJ11T_xAf_1256x620__1.jpg" style="width:100%"></img>
+                    <div class="text">RUSIA 2018</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 5</div>
+                    <img src="resources/images/jug.jpeg" style="width:100%"></img>
+                    <div class="text">Messi</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="resources/images/wallpaper2you_331205.jpg" style="width:100%"></img>
+                    <div class="text">Neymar</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 5</div>
+                    <img src="resources/images/w_900x700_262143212013-10-26_fcbvsmadrid_vic_1705.jpg" style="width:100%"></img>
+                    <div class="text">Pele</div>
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br/>
+
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span> 
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+        </section>
+        <br/>
+        <br/>
+        <br/>
+        <!--style="background-color: #;-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <h:link outcome="/partido/List" class="nav-link" value="Partidos"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/equipo/List"  class="nav-link" value="Equipos"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/jugador/List" class="nav-link" value="Jugadores"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/etapa/List" class="nav-link" value="Etapas"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/estadisticapartidojugador/List" class="nav-link" value="Estadistica por Jugador"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/coach/List" class="nav-link" value="Entrenadores"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/estado/List" class="nav-link" value="Provincias o Estados"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/pais/List" class="nav-link" value="Paises"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/posicion/List" class="nav-link" value="Posiciones"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/copa/List" class="nav-link" value="Copas"/>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link outcome="/arbitro/List" class="nav-link" value="Arbitros"/>
+                    </li>
+
+                </ul>
+
+                <!--<form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>-->
+
+            </div>
+        </nav>
+        <div class="container" style="margin-top:30px">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>COPA MUNDIAL</h3>
+                    <h5>RUSIA 2018:</h5>
+                    <div class="fakeimg"><img id="copa" src="resources/images/copa.png"></img></div>
+                    <p>La Copa Mundial de la FIFA Rusia 2018 es la vigésima primera edición de la Copa Mundial de Fútbol masculina organizada por la FIFA.</p>
+
+                    <hr class="d-sm-none"></hr>
+                </div>
+                <br/>
+                <div class="col-sm-8">
+                    <div class="fakeimg"><img id="copa2" src="resources/images/copa-mundial-de-la-fifa-rusia-2018-tcom_3.jpg"></img></div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h5>Goleada, Julio 7, 2018</h5>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Jugadores Estrella</h3>
+
+                    <div><img id="mvp" src="resources/images/FIFA-World-Cup-2018-Players-Wallpaper.jpg"></img></div>
+                    <h5>MVP, July 5, 2018</h5>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom:0;">
+            <nav  class="navbar navbar-expand-lg footer" style="height: 100px; background-color: #212529;">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="col-sm-4">
+                    <ul>
+                        <li class="nav-item">
+                            FOOTGAMES
+                        </li>
+                        <li class="nav-item">
+                            Contactos: 809-364-1225
+                        </li>
+                        <li class="nav-item">
+                            Todos los derechos reservados @2018
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4">
+                    <ul>
+                        <li class="nav-item">
+                            Integrantes:
+                        </li>
+                        <li class="nav-item">
+                            Carlos Torres 2016-2594
+                        </li>
+                        <li class="nav-item">
+                            Emmanuel Valenzuela 2016-2511
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4">
+                    <ul>
+                        <li class="nav-item">
+                            Centro Educativo: UNAPEC
+                        </li>
+                        <li class="nav-item">
+                            Maestro: Ing.Domingo Reyes
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- The social media icon bar -->
+        <div class="icon-bar">
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> 
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> 
+            <a href="#" class="google"><i class="fa fa-google"></i></a> 
+            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="youtube"><i class="fa fa-youtube"></i></a> 
+        </div>
+        <script src="resources/js/js.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+                    var _userway_config = {
+// uncomment the following line to override default position
+                        position: 2,
+// uncomment the following line to override default size (values: small, large)
+// size: 'small', 
+// uncomment the following line to override default language (e.g., fr, de, es, he, nl, etc.)
+// language: 'es',
+// uncomment the following line to override color set via widget
+// color: '#0097ff', 
+                        account: 'e7g3NZriA1'
+                    };
+        </script>
+        <script type="text/javascript" src="https://cdn.userway.org/widget.js"></script>
+    </h:body>
+
+
+</html>
+

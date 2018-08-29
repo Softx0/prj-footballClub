@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="4">
+
+
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_nombre}" for="nombre" />
+                    <h:inputText class="form-control" id="nombre" value="#{equipoController.selected.nombre}" title="#{bundle.EditEquipoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_cantJugadores}" for="cantJugadores" />
+                    <h:inputText class="form-control" id="cantJugadores" value="#{equipoController.selected.cantJugadores}" title="#{bundle.EditEquipoTitle_cantJugadores}" />
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText class="form-control" id="fechaCreacion" value="#{equipoController.selected.fechaCreacion}" title="#{bundle.EditEquipoTitle_fechaCreacion}" >
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_dueno}" for="dueno" />
+                    <h:inputText class="form-control" id="dueno" value="#{equipoController.selected.dueno}" title="#{bundle.EditEquipoTitle_dueno}" />
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_copasGanadas}" for="copasGanadas" />
+                    <h:inputText class="form-control" id="copasGanadas" value="#{equipoController.selected.copasGanadas}" title="#{bundle.EditEquipoTitle_copasGanadas}" />
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_estado}" for="estado" />
+                    <h:inputText class="form-control" id="estado" value="#{equipoController.selected.estado}" title="#{bundle.EditEquipoTitle_estado}" />
+
+
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_FKIdCoach}" for="FKIdCoach" />
+                    <h:inputText class="form-control" id="FKIdCoach" value="#{equipoController.selected.FKIdCoach}" title="#{bundle.EditEquipoTitle_FKIdCoach}"/>
+
+                </h:panelGrid>
+                <h:panelGrid columns="4">
+                    <h:commandLink class="btn btn-success" action="#{equipoController.update}" value="#{bundle.EditEquipoSaveLink}"/>
+
+                    <h:link class="btn btn-primary" outcome="View" value="#{bundle.EditEquipoViewLink}"/>
+
+                    <h:commandLink class="btn btn-info" action="#{equipoController.prepareList}" value="#{bundle.EditEquipoShowAllLink}" immediate="true"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.EditEquipoIndexLink}" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

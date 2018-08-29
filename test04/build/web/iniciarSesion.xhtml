@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Iniciar Sesion</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!--===============================================================================================-->	
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+        <link rel="stylesheet" type="text/css" href="css/util.css"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    </h:head>
+    <h:body>
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('resources/images/Soccer-4k-ultra-hd-wallpapers-Football-HD-football-wallpapers-4K.jpg');">
+                <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                    <h:form class="login100-form validate-form flex-sb flex-w">
+                        <div class="photo-inicio">
+                            <img id="photo-inicio-inicio" src="resources/images/logo10.png" ></img>
+                        </div>
+
+                        <!-- <a href="#" class="btn-face m-b-20">
+                             <i class="fa fa-facebook-official"></i>
+                             Facebook
+                         </a>
+ 
+                         <a href="#" class="btn-google m-b-20">
+                             <img src="images/icons/icon-google.png" alt="GOOGLE"></img>
+                             Google
+                         </a>-->
+
+                        <div class="p-t-31 p-b-9">
+                            <span class="txt1">
+                                Email
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Correo es obligatorio">
+                            <!-- <input class="input100" type="text" name="username" />-->
+                            <h:inputText class="input100" value="#{usuarioManagedBean.email}" required="required"></h:inputText>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="p-t-13 p-b-9">
+                            <span class="txt1">
+                                Contraseña
+                            </span>
+
+                            <a href="#" class="txt2 bo1 m-l-5">
+                                Olvidaste tu contraseña?
+                            </a>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                            <!--   <input class="input100" type="password" name="pass" />-->
+                            <h:inputSecret  class="input100" value="#{usuarioManagedBean.password}" required="required"></h:inputSecret>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn m-t-17">
+                            <!-- <button class="login100-form-btn">
+                                 Sign In
+                             </button>-->
+                            <h:commandButton type="submit" class="login100-form-btn" action="#{usuarioManagedBean.inicioSesion()}"  value="Entrar" ></h:commandButton>
+                        </div>
+
+                        <div class="w-full text-center p-t-55">
+                            <span class="txt2">
+                                Aun no eres miembro?
+                            </span>
+
+                            <h:link outcome="Create" value="Registrate" class="txt2 bo1"/>
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <div id="dropDownSelect1"></div>
+
+        <!--===============================================================================================-->
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+        <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            var _userway_config = {
+// uncomment the following line to override default position
+// position: 2,
+// uncomment the following line to override default size (values: small, large)
+// size: 'small', 
+// uncomment the following line to override default language (e.g., fr, de, es, he, nl, etc.)
+// language: 'es',
+// uncomment the following line to override color set via widget
+// color: '#0097ff', 
+                account: 'e7g3NZriA1'
+            };
+        </script>
+        <script type="text/javascript" src="https://cdn.userway.org/widget.js"></script>
+    </h:body>
+</html>
+

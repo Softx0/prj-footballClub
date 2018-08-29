@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCoachTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+
+                    <h:outputText value="#{bundle.ViewCoachLabel_nombre}"/>
+                    <h:outputText value="#{coachController.selected.nombre}" title="#{bundle.ViewCoachTitle_nombre}"/>
+
+                    <h:outputText value="#{bundle.ViewCoachLabel_estado}"/>
+                    <h:outputText value="#{coachController.selected.estado}" title="#{bundle.ViewCoachTitle_estado}"/>
+                </h:panelGrid>
+
+                <h:panelGrid  columns="5">
+                    <h:commandLink class="btn btn-danger" action="#{coachController.destroyAndView}" value="#{bundle.ViewCoachDestroyLink}"/>
+
+                    <h:link class="btn btn-warning" outcome="Edit" value="#{bundle.ViewCoachEditLink}"/>
+
+                    <h:commandLink class="btn btn-success" action="#{coachController.prepareCreate}" value="#{bundle.ViewCoachCreateLink}" />
+
+                    <h:commandLink class="btn btn-info" action="#{coachController.prepareList}" value="#{bundle.ViewCoachShowAllLink}"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.ViewCoachIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

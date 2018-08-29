@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCopaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCopaEmpty}" rendered="#{copaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{copaController.items.rowCount > 0}">
+                    <h:outputText value="#{copaController.pagination.pageFirstItem + 1}..#{copaController.pagination.pageLastItem + 1}/#{copaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{copaController.previous}" value="#{bundle.Previous} #{copaController.pagination.pageSize}" rendered="#{copaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{copaController.next}" value="#{bundle.Next} #{copaController.pagination.pageSize}" rendered="#{copaController.pagination.hasNextPage}"/>&nbsp;
+
+                    <h:panelGrid columns="6">
+
+                        <p:inputText placeholder="Buscar" value="#{consultaFlexibleBean.textoBuscar}" />
+                        <p:commandButton class="btn btn-outline-success btn-sm" value="Filtrar por Nombre" action="#{consultaFlexibleBean.llenarTablaFiltradaCopa()}" update="TableData" />
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/pdf.png"></h:graphicImage>
+                            <p:dataExporter type="pdf" target="TableData" fileName="Copas" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/excel.png"></h:graphicImage>
+                            <p:dataExporter type="xls" target="TableData" fileName="Copas" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive" url="../resources/images/xml.svg"></h:graphicImage>
+                            <p:dataExporter type="xml" target="TableData" fileName="Copas" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/csv_1.png"></h:graphicImage>
+                            <p:dataExporter type="csv" target="TableData" fileName="Copas" ></p:dataExporter>
+                        </h:commandLink>
+
+                    </h:panelGrid>
+
+                    <br/>
+
+                    <p:dataTable id="TableData" value="#{consultaFlexibleBean.listaCopa}" var="item" >
+
+                        <p:column class="col-sm" style="width:50px;" headerText="Id" >
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Descripcion" >
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Fecha" >
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Nombre" >
+                            <h:outputText value="#{item.sede}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:100px; text-align: center;" headerText="Ver" >
+                            <h:commandLink class="btn btn-primary" style="text-align: left;" action="#{copaController.prepareView}" value="#{bundle.ListCopaViewLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:100px; text-align: center;" headerText="Editar" >
+                            <h:commandLink class="btn btn-warning" style="text-align: left;" action="#{copaController.prepareEdit}" value="#{bundle.ListCopaEditLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:120px; text-align: center;" headerText="Eliminar" >
+                            <h:commandLink class="btn btn-danger" style="text-align: left;" action="#{copaController.destroy}" value="#{bundle.ListCopaDestroyLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:105px; text-align: center;" headerText="Copiar" >
+                            <h:commandLink class="btn btn-info" style="text-align: left;" value="Copiar"></h:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:panelGroup>
+                
+                <br />
+                
+                <h:panelGrid columns="2">
+                    <h:commandLink class="btn btn-success" action="#{copaController.prepareCreate}" value="#{bundle.ListCopaCreateLink}"/>
+
+                    <h:link class="btn btn-info" outcome="/index" value="#{bundle.ListCopaIndexLink}"/>
+                </h:panelGrid>
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstadisticapartidojugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="4">
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_id}" for="id" />
+                    <h:inputText readonly="true" class="form-control" id="id" value="#{estadisticapartidojugadorController.selected.id}" title="#{bundle.EditEstadisticapartidojugadorTitle_id}" required="true" requiredMessage="#{bundle.EditEstadisticapartidojugadorRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_FKIdJugador}" for="FKIdJugador" />
+                    <h:inputText class="form-control" id="FKIdJugador" value="#{estadisticapartidojugadorController.selected.FKIdJugador}" title="#{bundle.EditEstadisticapartidojugadorTitle_FKIdJugador}"/>
+
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_FKIdPartido}" for="FKIdPartido" />
+                    <h:inputText class="form-control" id="FKIdPartido" value="#{estadisticapartidojugadorController.selected.FKIdPartido}" title="#{bundle.EditEstadisticapartidojugadorTitle_FKIdPartido}"/>
+
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_golesAFavor}" for="golesAFavor" />
+                    <h:inputText class="form-control" id="golesAFavor" value="#{estadisticapartidojugadorController.selected.golesAFavor}" title="#{bundle.EditEstadisticapartidojugadorTitle_golesAFavor}" />
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_tarjetasAmarilla}" for="tarjetasAmarilla" />
+                    <h:inputText class="form-control" id="tarjetasAmarilla" value="#{estadisticapartidojugadorController.selected.tarjetasAmarilla}" title="#{bundle.EditEstadisticapartidojugadorTitle_tarjetasAmarilla}" />
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_tarjetaRoja}" for="tarjetaRoja" />
+                    <h:inputText class="form-control" id="tarjetaRoja" value="#{estadisticapartidojugadorController.selected.tarjetaRoja}" title="#{bundle.EditEstadisticapartidojugadorTitle_tarjetaRoja}" />
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_balonesRecuperados}" for="balonesRecuperados" />
+                    <h:inputText class="form-control" id="balonesRecuperados" value="#{estadisticapartidojugadorController.selected.balonesRecuperados}" title="#{bundle.EditEstadisticapartidojugadorTitle_balonesRecuperados}" />
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_balonesPerdidos}" for="balonesPerdidos" />
+                    <h:inputText class="form-control" id="balonesPerdidos" value="#{estadisticapartidojugadorController.selected.balonesPerdidos}" title="#{bundle.EditEstadisticapartidojugadorTitle_balonesPerdidos}" />
+                    <h:outputLabel value="#{bundle.EditEstadisticapartidojugadorLabel_faltasRecibidas}" for="faltasRecibidas" />
+                    <h:inputText class="form-control" id="faltasRecibidas" value="#{estadisticapartidojugadorController.selected.faltasRecibidas}" title="#{bundle.EditEstadisticapartidojugadorTitle_faltasRecibidas}" />
+                </h:panelGrid>
+
+                <h:panelGrid columns="4">
+                    <h:commandLink class="btn btn-success"  action="#{estadisticapartidojugadorController.update}" value="#{bundle.EditEstadisticapartidojugadorSaveLink}"/>
+
+                    <h:link class="btn btn-warning"  outcome="View" value="#{bundle.EditEstadisticapartidojugadorViewLink}"/>
+
+                    <h:commandLink class="btn btn-info"  action="#{estadisticapartidojugadorController.prepareList}" value="#{bundle.EditEstadisticapartidojugadorShowAllLink}" immediate="true"/>
+
+                    <h:link class="btn btn-primary"  outcome="/index" value="#{bundle.EditEstadisticapartidojugadorIndexLink}" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

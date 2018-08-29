@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEstadisticapartidojugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEstadisticapartidojugadorEmpty}" rendered="#{estadisticapartidojugadorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{estadisticapartidojugadorController.items.rowCount > 0}">
+                    <h:outputText value="#{estadisticapartidojugadorController.pagination.pageFirstItem + 1}..#{estadisticapartidojugadorController.pagination.pageLastItem + 1}/#{estadisticapartidojugadorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{estadisticapartidojugadorController.previous}" value="#{bundle.Previous} #{estadisticapartidojugadorController.pagination.pageSize}" rendered="#{estadisticapartidojugadorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{estadisticapartidojugadorController.next}" value="#{bundle.Next} #{estadisticapartidojugadorController.pagination.pageSize}" rendered="#{estadisticapartidojugadorController.pagination.hasNextPage}"/>&nbsp;
+
+                    <h:panelGrid columns="6">
+
+                        <p:inputText placeholder="Buscar" value="#{consultaFlexibleBean.textoBuscar}" />
+                        <p:commandButton class="btn btn-outline-success btn-sm" value="Filtrar por Nombre" action="#{consultaFlexibleBean.llenarTablaFiltradaEstadistica()}" update="TableData" />
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/pdf.png"></h:graphicImage>
+                            <p:dataExporter type="pdf" target="TableData" fileName="Estadisticas" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/excel.png"></h:graphicImage>
+                            <p:dataExporter type="xls" target="TableData" fileName="Estadisticas" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive" url="../resources/images/xml.svg"></h:graphicImage>
+                            <p:dataExporter type="xml" target="TableData" fileName="Estadisticas" ></p:dataExporter>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <h:graphicImage class="responsive"  url="../resources/images/csv_1.png"></h:graphicImage>
+                            <p:dataExporter type="csv" target="TableData" fileName="Estadisticas" ></p:dataExporter>
+                        </h:commandLink>
+
+                    </h:panelGrid>
+
+                    <br/>
+                    <p:dataTable id="TableData" value="#{consultaFlexibleBean.listaEstadistica}" var="item" >
+
+                        <p:column class="col-sm" style="width:50px;" headerText="Id" >
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Jugador" >
+                            <h:outputText value="#{item.FKIdJugador}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Partido" >
+                            <h:outputText value="#{item.FKIdPartido}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Goles" >
+                            <h:outputText value="#{item.golesAFavor}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Tarjetas Amarilla" >
+                            <h:outputText value="#{item.tarjetasAmarilla}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Tarjetas Rojas" >
+                            <h:outputText value="#{item.tarjetaRoja}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Faltas Recibidas" >
+                            <h:outputText value="#{item.balonesRecuperados}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Faltas Recibidas" >
+                            <h:outputText value="#{item.balonesPerdidos}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" headerText="Faltas Recibidas" >
+                            <h:outputText value="#{item.faltasRecibidas}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:105px; text-align: center;" headerText="Ver" >
+                            <h:commandLink class="btn btn-primary" action="#{estadisticapartidojugadorController.prepareView}" value="#{bundle.ListEstadisticapartidojugadorViewLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:105px; text-align: center;" headerText="Editar" >
+                            <h:commandLink  class="btn btn-warning" action="#{estadisticapartidojugadorController.prepareEdit}" value="#{bundle.ListEstadisticapartidojugadorEditLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:120px; text-align: center;" headerText="Eliminar" >
+                            <h:commandLink  class="btn btn-danger" action="#{estadisticapartidojugadorController.destroy}" value="#{bundle.ListEstadisticapartidojugadorDestroyLink}"/>
+                        </p:column>
+
+                        <p:column class="col-sm" exportable="false" style="width:105px; text-align: center;" headerText="Copiar" >
+                            <h:commandLink class="btn btn-info" style="text-align: left;" value="Copiar"></h:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:panelGroup>
+
+                <br />
+                <h:panelGrid columns="2">
+                    <h:commandLink class="btn btn-primary"  action="#{estadisticapartidojugadorController.prepareCreate}" value="#{bundle.ListEstadisticapartidojugadorCreateLink}"/>
+
+                    <h:link class="btn btn-primary"  outcome="/index" value="#{bundle.ListEstadisticapartidojugadorIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPartidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="4">
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_fecha}" for="fecha" />
+                    <h:inputText class="form-control" id="fecha" value="#{partidoController.selected.fecha}" title="#{bundle.EditPartidoTitle_fecha}" >
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </h:inputText>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_cantPuntosEquipo1}" for="cantPuntosEquipo1" />
+                    <h:inputText class="form-control" id="cantPuntosEquipo1" value="#{partidoController.selected.cantPuntosEquipo1}" title="#{bundle.EditPartidoTitle_cantPuntosEquipo1}" />
+                    
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_cantPuntosEquipo2}" for="cantPuntosEquipo2" />
+                    <h:inputText class="form-control" id="cantPuntosEquipo2" value="#{partidoController.selected.cantPuntosEquipo2}" title="#{bundle.EditPartidoTitle_cantPuntosEquipo2}" />
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_descalificado}" for="descalificado" />
+                    <h:inputText class="form-control" id="descalificado" value="#{partidoController.selected.descalificado}" title="#{bundle.CreatePartidoTitle_descalificado}"/>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_FKEquipo1}" for="FKEquipo1" />
+                    <h:inputText class="form-control" id="FKEquipo1" value="#{partidoController.selected.FKEquipo1}" title="#{bundle.CreatePartidoTitle_FKEquipo1}"/>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_FKEquipo2}" for="FKEquipo2" />
+                    <h:inputText class="form-control" id="FKEquipo2" value="#{jugadorController.selected.FKIdPosicion}" title="#{bundle.EditJugadorTitle_FKIdPosicion}"/>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_FKArbitro}" for="FKArbitro" />
+                    <h:inputText class="form-control" id="FKArbitro" value="#{partidoController.selected.FKArbitro}" title="#{bundle.EditPartidoTitle_FKArbitro}"/>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_FKCopa}" for="FKCopa" />
+                    <h:inputText class="form-control" id="FKCopa" value="#{partidoController.selected.FKCopa}" title="#{bundle.EditPartidoTitle_FKCopa}"/>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_FKEstado}" for="FKEstado" />
+                    <h:inputText class="form-control" id="FKEstado" value="#{partidoController.selected.FKEstado}" title="#{bundle.EditPartidoTitle_FKEstado}"/>
+
+                    <h:outputLabel value="#{bundle.EditPartidoLabel_FKEtapa}" for="FKEtapa" />
+                    <h:inputText class="form-control" id="FKEtapa" value="#{partidoController.selected.FKEtapa}" title="#{bundle.EditPartidoTitle_FKEtapa}"/>
+
+                </h:panelGrid>
+                <h:panelGrid columns="4">
+                    <h:commandLink class="btn btn-success" action="#{partidoController.update}" value="#{bundle.EditPartidoSaveLink}"/>
+
+                    <h:link class="btn btn-warning" outcome="View" value="#{bundle.EditPartidoViewLink}"/>
+
+                    <h:commandLink class="btn btn-info" action="#{partidoController.prepareList}" value="#{bundle.EditPartidoShowAllLink}" immediate="true"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.EditPartidoIndexLink}" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

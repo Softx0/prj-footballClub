@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePosicionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.CreatePosicionLabel_nombre}" for="nombre" />
+                    <h:inputText class="form-control" id="nombre" value="#{posicionController.selected.nombre}" title="#{bundle.CreatePosicionTitle_nombre}" />
+
+                    <h:outputLabel value="#{bundle.CreatePosicionLabel_descripcion}" for="descripcion" />
+                    <h:inputText class="form-control" id="descripcion" value="#{posicionController.selected.descripcion}" title="#{bundle.CreatePosicionTitle_descripcion}" />
+                </h:panelGrid>
+                <br />
+
+                <h:panelGrid columns="3">
+                    <h:commandLink class="btn btn-success" action="#{posicionController.create}" value="#{bundle.CreatePosicionSaveLink}" />
+
+                    <h:commandLink class="btn btn-info" action="#{posicionController.prepareList}" value="#{bundle.CreatePosicionShowAllLink}" immediate="true"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.CreatePosicionIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditJugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="4">
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_cedula}" for="cedula" />
+                    <h:inputText class="form-control" id="cedula" value="#{jugadorController.selected.cedula}" title="#{bundle.EditJugadorTitle_cedula}" required="true" requiredMessage="#{bundle.EditJugadorRequiredMessage_cedula}"/>
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_nombre}" for="nombre" />
+                    <h:inputText class="form-control" id="nombre" value="#{jugadorController.selected.nombre}" title="#{bundle.EditJugadorTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_apellido}" for="apellido" />
+                    <h:inputText class="form-control" id="apellido" value="#{jugadorController.selected.apellido}" title="#{bundle.EditJugadorTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText class="form-control" id="fechaNacimiento" value="#{jugadorController.selected.fechaNacimiento}" title="#{bundle.EditJugadorTitle_fechaNacimiento}" >
+                        pattern="yyyy/MM/dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_noCamiseta}" for="noCamiseta" />
+                    <h:inputText class="form-control" id="noCamiseta" value="#{jugadorController.selected.noCamiseta}" title="#{bundle.EditJugadorTitle_noCamiseta}" />
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_altura}" for="altura" />
+                    <h:inputText class="form-control" id="altura" value="#{jugadorController.selected.altura}" title="#{bundle.EditJugadorTitle_altura}" />
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_peso}" for="peso" />
+                    <h:inputText class="form-control" id="peso" value="#{jugadorController.selected.peso}" title="#{bundle.EditJugadorTitle_peso}" />
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_debut}" for="debut" />
+                    <h:inputText class="form-control" id="debut" value="#{jugadorController.selected.debut}" title="#{bundle.EditJugadorTitle_debut}" >
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_estado}" for="estado" />
+                    <h:inputText class="form-control" id="estado" value="#{jugadorController.selected.estado}" title="#{bundle.EditJugadorTitle_estado}" />
+
+
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_FKIdEquipo}" for="FKIdEquipo" />
+                    <h:inputText class="form-control" id="FKIdEquipo" value="#{jugadorController.selected.FKIdEquipo}" title="#{bundle.EditJugadorTitle_FKIdEquipo}"/>
+
+
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_FKNacionalidad}" for="FKNacionalidad" />
+                    <h:inputText class="form-control" id="FKNacionalidad" value="#{jugadorController.selected.FKNacionalidad}" title="#{bundle.EditJugadorTitle_FKNacionalidad}"/>
+
+
+
+                    <h:outputLabel value="#{bundle.EditJugadorLabel_FKIdPosicion}" for="FKIdPosicion" />
+                    <h:inputText class="form-control" id="FKIdPosicion" value="#{jugadorController.selected.FKIdPosicion}" title="#{bundle.EditJugadorTitle_FKIdPosicion}"/>
+
+                </h:panelGrid>
+                <h:panelGrid columns="4">
+                    <h:commandLink class="btn btn-success" action="#{jugadorController.update}" value="#{bundle.EditJugadorSaveLink}"/>
+
+                    <h:link class="btn btn-warning" outcome="View" value="#{bundle.EditJugadorViewLink}"/>
+
+                    <h:commandLink class="btn btn-info" action="#{jugadorController.prepareList}" value="#{bundle.EditJugadorShowAllLink}" immediate="true"/>
+
+                    <h:link class="btn btn-primary" outcome="/index" value="#{bundle.EditJugadorIndexLink}" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

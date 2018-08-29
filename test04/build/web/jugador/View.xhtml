@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewJugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewJugadorLabel_cedula}"/>
+                    <h:outputText value="#{jugadorController.selected.cedula}" title="#{bundle.ViewJugadorTitle_cedula}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_nombre}"/>
+                    <h:outputText value="#{jugadorController.selected.nombre}" title="#{bundle.ViewJugadorTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_apellido}"/>
+                    <h:outputText value="#{jugadorController.selected.apellido}" title="#{bundle.ViewJugadorTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_fechaNacimiento}"/>
+                    <h:outputText value="#{jugadorController.selected.fechaNacimiento}" title="#{bundle.ViewJugadorTitle_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_noCamiseta}"/>
+                    <h:outputText value="#{jugadorController.selected.noCamiseta}" title="#{bundle.ViewJugadorTitle_noCamiseta}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_altura}"/>
+                    <h:outputText value="#{jugadorController.selected.altura}" title="#{bundle.ViewJugadorTitle_altura}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_peso}"/>
+                    <h:outputText value="#{jugadorController.selected.peso}" title="#{bundle.ViewJugadorTitle_peso}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_debut}"/>
+                    <h:outputText value="#{jugadorController.selected.debut}" title="#{bundle.ViewJugadorTitle_debut}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_estado}"/>
+                    <h:outputText value="#{jugadorController.selected.estado}" title="#{bundle.ViewJugadorTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_FKIdEquipo}"/>
+                    <h:outputText value="#{jugadorController.selected.FKIdEquipo}" title="#{bundle.ViewJugadorTitle_FKIdEquipo}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_FKNacionalidad}"/>
+                    <h:outputText value="#{jugadorController.selected.FKNacionalidad}" title="#{bundle.ViewJugadorTitle_FKNacionalidad}"/>
+                    <h:outputText value="#{bundle.ViewJugadorLabel_FKIdPosicion}"/>
+                    <h:outputText value="#{jugadorController.selected.FKIdPosicion}" title="#{bundle.ViewJugadorTitle_FKIdPosicion}"/>
+                </h:panelGrid>
+                <br />
+
+                <h:panelGrid columns="5">
+                    <h:commandLink  class="btn btn-danger" action="#{jugadorController.destroyAndView}" value="#{bundle.ViewJugadorDestroyLink}"/>
+
+                    <h:link  class="btn btn-warning" outcome="Edit" value="#{bundle.ViewJugadorEditLink}"/>
+
+                    <h:commandLink  class="btn btn-success" action="#{jugadorController.prepareCreate}" value="#{bundle.ViewJugadorCreateLink}" />
+
+                    <h:commandLink  class="btn btn-info" action="#{jugadorController.prepareList}" value="#{bundle.ViewJugadorShowAllLink}"/>
+
+                    <h:link  class="btn btn-primary" outcome="/index" value="#{bundle.ViewJugadorIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

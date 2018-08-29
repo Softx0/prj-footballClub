@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:17155/WebServiceConfirmacion/ConfirmacionWebService?wsdl" uri="wsdl/localhost_17155/WebServiceConfirmacion/ConfirmacionWebService.wsdl"/>
+    <system systemId="http://localhost:17155/WebServiceConfirmacion/ConfirmacionWebService?xsd=1" uri="wsdl/localhost_17155/WebServiceConfirmacion/ConfirmacionWebService.xsd_1.xsd"/>
+</catalog>

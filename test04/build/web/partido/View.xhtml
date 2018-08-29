@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPartidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPartidoLabel_id}"/>
+                    <h:outputText value="#{partidoController.selected.id}" title="#{bundle.ViewPartidoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_fecha}"/>
+                    <h:outputText value="#{partidoController.selected.fecha}" title="#{bundle.ViewPartidoTitle_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_cantPuntosEquipo1}"/>
+                    <h:outputText value="#{partidoController.selected.cantPuntosEquipo1}" title="#{bundle.ViewPartidoTitle_cantPuntosEquipo1}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_cantPuntosEquipo2}"/>
+                    <h:outputText value="#{partidoController.selected.cantPuntosEquipo2}" title="#{bundle.ViewPartidoTitle_cantPuntosEquipo2}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_descalificado}"/>
+                    <h:outputText value="#{partidoController.selected.descalificado}" title="#{bundle.ViewPartidoTitle_descalificado}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_FKEquipo1}"/>
+                    <h:outputText value="#{partidoController.selected.FKEquipo1}" title="#{bundle.ViewPartidoTitle_FKEquipo1}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_FKEquipo2}"/>
+                    <h:outputText value="#{partidoController.selected.FKEquipo2}" title="#{bundle.ViewPartidoTitle_FKEquipo2}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_FKArbitro}"/>
+                    <h:outputText value="#{partidoController.selected.FKArbitro}" title="#{bundle.ViewPartidoTitle_FKArbitro}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_FKCopa}"/>
+                    <h:outputText value="#{partidoController.selected.FKCopa}" title="#{bundle.ViewPartidoTitle_FKCopa}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_FKEstado}"/>
+                    <h:outputText value="#{partidoController.selected.FKEstado}" title="#{bundle.ViewPartidoTitle_FKEstado}"/>
+                    <h:outputText value="#{bundle.ViewPartidoLabel_FKEtapa}"/>
+                    <h:outputText value="#{partidoController.selected.FKEtapa}" title="#{bundle.ViewPartidoTitle_FKEtapa}"/>
+                </h:panelGrid>
+                <br />
+
+                <h:panelGrid columns="5">
+                    <h:commandLink class="btn btn-danger"  action="#{partidoController.destroyAndView}" value="#{bundle.ViewPartidoDestroyLink}"/>
+
+                    <h:link class="btn btn-warning"  outcome="Edit" value="#{bundle.ViewPartidoEditLink}"/>
+
+                    <h:commandLink class="btn btn-success"  action="#{partidoController.prepareCreate}" value="#{bundle.ViewPartidoCreateLink}" />
+
+                    <h:commandLink class="btn btn-info"  action="#{partidoController.prepareList}" value="#{bundle.ViewPartidoShowAllLink}"/>
+
+                    <h:link class="btn btn-primary"  outcome="/index" value="#{bundle.ViewPartidoIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
